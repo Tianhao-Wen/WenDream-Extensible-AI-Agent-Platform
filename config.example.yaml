@@ -1,0 +1,17 @@
+# Copy this file to .wendream/config.yaml (do not commit the copied file).
+# Set the API key in your environment, not here.
+providers:
+  - name: deepseek
+    protocol: openai-compat
+    base_url: https://api.deepseek.com
+    model: deepseek-chat
+    api_key: "${DEEPSEEK_API_KEY}"
+    thinking: false
+
+permission_mode: default
+mcp_servers: []
+hooks: []
+enable_fork: false
+enable_verification_agent: false
+teammate_mode: ""
+enable_coordinator_mode: false
