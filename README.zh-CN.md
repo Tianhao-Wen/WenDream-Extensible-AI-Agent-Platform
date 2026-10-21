@@ -447,13 +447,8 @@ WenDream/
 
 ---
 
-## 🙏 致谢与项目来源
-
-WenDream 在开源 **MewCode Agent** 项目的基础上进行扩展与工程化改造。原框架的部分基础能力来自上游，本项目重点开展工具执行策略、Workspace 与跨平台兼容、权限与 Hook、交互集成及自动化评测方面的工作。具体说明见 [`docs/ATTRIBUTION.md`](docs/ATTRIBUTION.md)。
-
 ## 📜 许可证
 
-项目作者已说明获得上游使用许可。正式公开再分发时，请依据实际授权保留对应的原始 LICENSE、NOTICE、版权声明及必要署名。目前整理包没有可核验的上游 LICENSE 原文，不能在这里擅自写成 MIT 或 Apache。参见 [项目来源与许可说明](docs/ATTRIBUTION.md)。
 
 ---
 
