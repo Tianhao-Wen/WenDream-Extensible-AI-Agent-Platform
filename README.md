@@ -69,7 +69,7 @@ Never record API keys, local credentials, private conversations, or sensitive fi
 ```text
                    ┌──────────────────────────────┐
                    │             User             │
-                   │    Terminal TUI / Web UI      │
+                   │    Terminal TUI / Web UI     │
                    └──────────────┬───────────────┘
                                   │ request / events
                                   ▼
