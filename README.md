@@ -474,7 +474,6 @@ WenDream/
 │   ├── results/                  # Published frozen-run summaries
 │   └── runner_validated.py       # Real-Agent benchmark entrypoint
 ├── scripts/                      # Maintenance / audit utilities
-├── docs/                         # Attribution and engineering notes
 ├── config.example.yaml           # No-secret configuration template
 ├── pyproject.toml                # Package metadata and CLI entrypoint
 ├── uv.lock                       # Dependency lock
