@@ -1,6 +1,3 @@
-[README-AI.md](https://github.com/user-attachments/files/33773030/README-AI.md)
-<div align="center">
-
 # 🤖 WenDream — Extensible AI Agent Platform
 
 **A tool-using AI Agent for natural-language tasks, file operations, code exploration, and multi-step workflows**
@@ -512,6 +509,7 @@ WenDream/
 ## 📜 License
 
 For academic use only. Not for commercial deployment.
+
 ---
 
 <div align="center">
