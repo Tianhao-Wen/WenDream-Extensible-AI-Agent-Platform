@@ -415,7 +415,6 @@ WenDream/
 ├── tests/                   # 测试用例
 ├── benchmark/               # 工程 Benchmark、Fixture 与汇总结果
 ├── scripts/                 # 辅助与审计脚本
-├── docs/                    # 来源归属、工程记录
 ├── config.example.yaml      # 无密钥配置模板
 ├── pyproject.toml           # Python 包及 CLI 入口
 ├── uv.lock
