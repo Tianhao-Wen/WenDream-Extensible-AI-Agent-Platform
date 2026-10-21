@@ -508,9 +508,6 @@ WenDream/
 
 ---
 
-## 🙏 Acknowledgements
-
-WenDream is developed on top of and substantially adapts the **MewCode Agent** open-source project. Some underlying framework capabilities originated upstream; WenDream's published engineering work focuses on tool behavior, Workspace and cross-platform fixes, permission and hook handling, product integration, and evaluation. See [Upstream Attribution](docs/ATTRIBUTION.md).
 
 ## 📜 License
 
