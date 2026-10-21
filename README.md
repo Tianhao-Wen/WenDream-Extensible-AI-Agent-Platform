@@ -511,8 +511,7 @@ WenDream/
 
 ## 📜 License
 
-The project author has indicated permission to use the upstream project. **Before public redistribution**, the repository must include the applicable original license notices and any attribution or redistribution terms required by the actual upstream source. The current public preparation package does not contain a verified upstream `LICENSE` file; [the attribution note](docs/ATTRIBUTION.md) explains the outstanding documentation.
-
+For academic use only. Not for commercial deployment.
 ---
 
 <div align="center">
