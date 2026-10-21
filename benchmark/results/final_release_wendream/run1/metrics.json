@@ -1,0 +1,40 @@
+{
+  "run": "run1",
+  "total": 30,
+  "passed": 27,
+  "failed": 1,
+  "timeout": 0,
+  "skipped": 2,
+  "task_success_rate": 96.4,
+  "wall_seconds": 304.23,
+  "sum_case_latency": 303.8,
+  "avg_latency": 10.85,
+  "median_latency": 6.17,
+  "avg_llm": 4,
+  "median_llm": 4.0,
+  "avg_tool": 2.61,
+  "median_tool": 3.0,
+  "post_completion_llm": 27,
+  "post_completion_tool": 15,
+  "over_verification": 9,
+  "unnecessary_tool_calls": 19,
+  "unnecessary_tool_rate": 26.0,
+  "tool_free_compliant": 5,
+  "tool_free_total": 5,
+  "tool_free_compliance_rate": 100.0,
+  "tool_free_calls": 0,
+  "tool_free_detail": {
+    "CTX_001": 0,
+    "CTX_002": 0,
+    "CTX_004": 0,
+    "SESSION_001": 0,
+    "SESSION_002": 0
+  },
+  "undecodable_tool_results": 0,
+  "repo_pollution_clean": false,
+  "repo_pollution_created": 0,
+  "repo_pollution_modified": 1,
+  "non_passing": {
+    "ERROR_003": "FAILED | checks failed: contains"
+  }
+}

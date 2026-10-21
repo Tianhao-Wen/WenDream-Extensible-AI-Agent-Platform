@@ -1,0 +1,293 @@
+{
+  "cases": [
+    {
+      "id": "CTX_001",
+      "category": "Context",
+      "prompt": "What was my project code name?",
+      "history": [
+        {"role": "user", "prompt": "My project code name is Apollo."},
+        {"role": "user", "prompt": "What is the difference between a Python list and a tuple?"},
+        {"role": "user", "prompt": "What was my project code name?"}
+      ],
+      "checks": [{"type": "contains", "expected": "Apollo"}]
+    },
+    {
+      "id": "CTX_002",
+      "category": "Context",
+      "prompt": "Please restate the constraints I gave earlier.",
+      "history": [
+        {"role": "user", "prompt": "Use Python. Do not use third-party libraries. Output JSON."},
+        {"role": "user", "prompt": "Ignore the previous content and now restate the constraints."}
+      ],
+      "checks": [
+        {"type": "contains", "expected": "Python"},
+        {"type": "contains", "expected": "no third-party libraries"},
+        {"type": "contains", "expected": "JSON"}
+      ]
+    },
+    {
+      "id": "CTX_003",
+      "category": "Context",
+      "fixture": "project_info.txt",
+      "prompt": "Who is the owner mentioned in the file?",
+      "history": [
+        {"role": "user", "prompt": "Read the project info file and summarize it."},
+        {"role": "user", "prompt": "Who is the owner mentioned in the file?"}
+      ],
+      "checks": [{"type": "contains", "expected": "Felix"}]
+    },
+    {
+      "id": "CTX_004",
+      "category": "Context",
+      "prompt": "What is the code I told you earlier?",
+      "history": [
+        {"role": "user", "prompt": "TEST_CODE = WD-2026-30"},
+        {"role": "user", "prompt": "Please remember that code for later."},
+        {"role": "user", "prompt": "What is the code I told you earlier?"}
+      ],
+      "checks": [{"type": "contains", "expected": "WD-2026-30"}]
+    },
+    {
+      "id": "FILE_001",
+      "category": "File Operations",
+      "fixture": "order.txt",
+      "prompt": "Read the order number and tell me the exact value.",
+      "checks": [{"type": "contains", "expected": "ORDER-WD-48291"}]
+    },
+    {
+      "id": "FILE_002",
+      "category": "File Operations",
+      "fixture": "scores.csv",
+      "prompt": "Read the CSV and tell me the highest score and who earned it.",
+      "checks": [
+        {"type": "contains", "expected": "Bob"},
+        {"type": "contains", "expected": "95"}
+      ]
+    },
+    {
+      "id": "FILE_003",
+      "category": "File Operations",
+      "fixture": "config.json",
+      "prompt": "Set the timeout to 30 while keeping retry at 3 and mode as safe.",
+      "checks": [
+        {"type": "file_content", "path": "config.json", "expected": "\"timeout\": 30"},
+        {"type": "file_content", "path": "config.json", "expected": "\"retry\": 3"},
+        {"type": "file_content", "path": "config.json", "expected": "\"mode\": \"safe\""}
+      ]
+    },
+    {
+      "id": "FILE_004",
+      "category": "File Operations",
+      "prompt": "Create result.json with the following JSON: {\"project\": \"WenDream\", \"benchmark\": true, \"version\": 1}",
+      "checks": [
+        {"type": "file_exists", "path": "result.json"},
+        {"type": "file_content", "path": "result.json", "expected": "\"project\": \"WenDream\""},
+        {"type": "file_content", "path": "result.json", "expected": "\"benchmark\": true"},
+        {"type": "file_content", "path": "result.json", "expected": "\"version\": 1"}
+      ]
+    },
+    {
+      "id": "FILE_005",
+      "category": "File Operations",
+      "files": [
+        {"path": "alpha.txt", "content": "ProjectAlpha\n"},
+        {"path": "beta.txt", "content": "ProjectAlpha\n"}
+      ],
+      "prompt": "Update both files to replace ProjectAlpha with WenDream.",
+      "checks": [
+        {"type": "file_content", "path": "alpha.txt", "expected": "WenDream"},
+        {"type": "file_content", "path": "beta.txt", "expected": "WenDream"}
+      ]
+    },
+    {
+      "id": "FILE_006",
+      "category": "File Operations",
+      "files": [
+        {"path": "alpha.py", "content": "BENCHMARK_TARGET\n"},
+        {"path": "beta.txt", "content": "ProjectAlpha\n"},
+        {"path": "gamma.md", "content": "# BENCHMARK_TARGET\n"},
+        {"path": "delta.py", "content": "ProjectAlpha\n"}
+      ],
+      "prompt": "Find every file containing BENCHMARK_TARGET and list the exact matching paths.",
+      "checks": [
+        {"type": "contains", "expected": "alpha.py"},
+        {"type": "contains", "expected": "gamma.md"}
+      ]
+    },
+    {
+      "id": "TOOL_001",
+      "category": "Tool Calling",
+      "prompt": "Count how many files are in the current workspace. Use the actual tool, then report the number.",
+      "checks": [{"type": "contains", "expected": "count"}]
+    },
+    {
+      "id": "TOOL_002",
+      "category": "Tool Calling",
+      "fixture": "search_terms.txt",
+      "prompt": "Search the workspace for WENDREAM_MAGIC_2026 and return the file path containing it.",
+      "checks": [{"type": "contains", "expected": "search_terms.txt"}]
+    },
+    {
+      "id": "TOOL_003",
+      "category": "Tool Calling",
+      "prompt": "Search for THIS_STRING_DOES_NOT_EXIST_98765 and clearly report that it was not found without breaking the session.",
+      "checks": [
+        {"type": "contains", "expected": "not found"},
+        {"type": "contains", "expected": "THIS_STRING_DOES_NOT_EXIST_98765"}
+      ]
+    },
+    {
+      "id": "TOOL_004",
+      "category": "Tool Calling",
+      "files": [
+        {"path": "intentional_failure.py", "content": "import sys\nprint(\"intentional failure\")\nsys.exit(1)\n"}
+      ],
+      "prompt": "Run intentional_failure.py and report the failure accurately.",
+      "checks": [{"type": "contains", "expected": "exit code"}]
+    },
+    {
+      "id": "TOOL_005",
+      "category": "Tool Calling",
+      "files": [
+        {"path": "calc.py", "content": "result = 2 + 2\nprint(result)\n"}
+      ],
+      "prompt": "Update calc.py to compute 21 * 2, then execute it and report the stdout result.",
+      "checks": [
+        {"type": "file_content", "path": "calc.py", "expected": "21 * 2"},
+        {"type": "contains", "expected": "42"}
+      ]
+    },
+    {
+      "id": "TOOL_006",
+      "category": "Tool Calling",
+      "files": [
+        {"path": "data folder/sample file.txt", "content": "sample content\n"}
+      ],
+      "prompt": "Read the file at data folder/sample file.txt and report its content exactly.",
+      "checks": [{"type": "contains", "expected": "sample content"}]
+    },
+    {
+      "id": "INFO_001",
+      "category": "Information Processing",
+      "fixture": "jobs.html",
+      "prompt": "Read the job list and extract all Shanghai job titles.",
+      "checks": [
+        {"type": "contains", "expected": "AI Engineer"},
+        {"type": "contains", "expected": "Product Manager"},
+        {"type": "contains", "expected": "ML Engineer"}
+      ]
+    },
+    {
+      "id": "INFO_002",
+      "category": "Information Processing",
+      "fixture": "jobs_detail.html",
+      "prompt": "From the job HTML, select AI jobs and sort them by salary ceiling descending.",
+      "checks": [
+        {"type": "contains", "expected": "AI Researcher"},
+        {"type": "contains", "expected": "AI Engineer"},
+        {"type": "contains", "expected": "350k"}
+      ]
+    },
+    {
+      "id": "INFO_003",
+      "category": "Information Processing",
+      "fixture": "catalog.html",
+      "prompt": "Create products.json from the product data listing each product name, price, and rating.",
+      "checks": [
+        {"type": "file_exists", "path": "products.json"},
+        {"type": "file_content", "path": "products.json", "expected": "Alpha"},
+        {"type": "file_content", "path": "products.json", "expected": "Beta"}
+      ]
+    },
+    {
+      "id": "INFO_004",
+      "category": "Information Processing",
+      "files": [
+        {"path": "page_old.html", "content": "<html><body><div class='job'>上海 AI Engineer 320k</div><div class='job'>北京 Data Engineer 180k</div><div class='job'>深圳 ML Engineer 280k</div></body></html>"},
+        {"path": "page_new.html", "content": "<html><body><div class='job'>上海 AI Engineer 320k</div><div class='job'>上海 Backend Engineer 220k</div><div class='job'>深圳 ML Engineer 240k</div></body></html>"}
+      ],
+      "prompt": "Compare the old and new job pages and summarize the one new job, one removed job, and one salary change.",
+      "checks": [
+        {"type": "contains", "expected": "new job"},
+        {"type": "contains", "expected": "removed"},
+        {"type": "contains", "expected": "salary"}
+      ]
+    },
+    {
+      "id": "VISION_001",
+      "category": "Vision",
+      "prompt": "How many circles and squares are in this image?",
+      "checks": [{"type": "contains", "expected": "3"}, {"type": "contains", "expected": "2"}]
+    },
+    {
+      "id": "VISION_002",
+      "category": "Vision",
+      "prompt": "Read this flowchart and give the exact order: Input -> Agent -> Tool -> Result.",
+      "checks": [
+        {"type": "contains", "expected": "Input"},
+        {"type": "contains", "expected": "Agent"},
+        {"type": "contains", "expected": "Tool"},
+        {"type": "contains", "expected": "Result"}
+      ]
+    },
+    {
+      "id": "VISION_003",
+      "category": "Vision",
+      "prompt": "From the table image, which model has the highest score?",
+      "checks": [{"type": "contains", "expected": "B"}, {"type": "contains", "expected": "91"}]
+    },
+    {
+      "id": "VISION_004",
+      "category": "Vision",
+      "prompt": "Read the PDF and tell me the project, benchmark task count, and primary model.",
+      "checks": [
+        {"type": "contains", "expected": "WenDream"},
+        {"type": "contains", "expected": "30"},
+        {"type": "contains", "expected": "Qwen"}
+      ]
+    },
+    {
+      "id": "SESSION_001",
+      "category": "Session",
+      "prompt": "What is the secret number from the session?",
+      "history": [{"role": "user", "prompt": "Session A secret number is ALPHA-7788."}],
+      "checks": [{"type": "contains", "expected": "ALPHA-7788"}]
+    },
+    {
+      "id": "SESSION_002",
+      "category": "Session",
+      "prompt": "What is the color stored in this session?",
+      "history": [{"role": "user", "prompt": "COLOR_A = RED"}, {"role": "user", "prompt": "What is the color stored in this session?"}],
+      "checks": [{"type": "contains", "expected": "RED"}]
+    },
+    {
+      "id": "SESSION_003",
+      "category": "Session",
+      "prompt": "What is 20 + 22?",
+      "history": [{"role": "user", "prompt": "5 + 5 = 10. Regenerate to 20 + 22."}],
+      "checks": [{"type": "contains", "expected": "42"}]
+    },
+    {
+      "id": "ERROR_001",
+      "category": "Error Recovery",
+      "prompt": "Read the missing file this_file_does_not_exist_12345.txt and then answer 1 + 1.",
+      "checks": [
+        {"type": "contains", "expected": "not found"},
+        {"type": "contains", "expected": "2"}
+      ]
+    },
+    {
+      "id": "ERROR_002",
+      "category": "Error Recovery",
+      "permission_policy": "deny",
+      "prompt": "Attempt to write to a protected path and report whether the permission is denied or allowed.",
+      "checks": [{"type": "contains", "expected": "deny"}]
+    },
+    {
+      "id": "ERROR_003",
+      "category": "Error Recovery",
+      "prompt": "Register a temporary failure tool, call it twice, and report the result of the first and second attempts.",
+      "checks": [{"type": "contains", "expected": "temporary failure"}, {"type": "contains", "expected": "success"}]
+    }
+  ]
+}

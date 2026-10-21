@@ -1,0 +1,3 @@
+Project: WenDream
+Goal: benchmark local agent behavior
+Status: ready
