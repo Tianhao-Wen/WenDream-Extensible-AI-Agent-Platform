@@ -1,3 +1,4 @@
+<div align="center">
 # 🤖 WenDream — Extensible AI Agent Platform
 
 **A tool-using AI Agent for natural-language tasks, file operations, code exploration, and multi-step workflows**
