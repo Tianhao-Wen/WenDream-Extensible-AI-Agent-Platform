@@ -21,6 +21,8 @@
 
 ## 🎬 Web Demo
 
+![WenDream Web UI Preview](./demo.png)
+
 > **Web walkthrough coming soon.** A screen recording of the actual WenDream browser interface will be added here after it has been recorded and reviewed.
 
 The planned demonstration will show an end-to-end, **real model and tool execution** workflow rather than a scripted UI mock-up:
