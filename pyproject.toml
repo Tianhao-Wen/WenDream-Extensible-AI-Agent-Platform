@@ -1,7 +1,7 @@
 [project]
 name = "wendream"
 version = "0.3.0"
-description = "WenDream — a general-purpose AI assistant built on the open-source MewCode Agent framework"
+description = "WenDream — a  AI Agent platform"
 requires-python = ">=3.11"
 dependencies = [
     "textual>=2.1.0",
